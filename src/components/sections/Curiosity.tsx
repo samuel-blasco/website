@@ -1,3 +1,6 @@
+import { spacing } from "@/styles/design";
+
+import Section from "../layout/Section";
 import Container from "../layout/Container";
 import Card from "../ui/Card";
 import SectionHeader from "../ui/SectionHeader";
@@ -12,9 +15,10 @@ export default function Curiosity({
   collections,
 }: CuriosityProps) {
   return (
-    <section
-      id="curiosity"
-      className="bg-[#FCFCFA] py-40"
+    <Section
+      style={{
+        background: "#FCFCFA",
+      }}
     >
       <Container>
         <SectionHeader
@@ -23,20 +27,43 @@ export default function Curiosity({
           description="I'm fascinated by systems that learn, adapt and help us understand the world. Whether through artificial intelligence, computational social science or engineering, my goal is always the same: building intelligent systems that connect ideas rather than isolate them."
         />
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {collections.map((collection) => (
-            <Card key={collection.id}>
-              <h3 className="text-2xl font-semibold text-[#111827]">
-                {collection.title}
-              </h3>
+        <div
+          style={{
+            borderTop: "1px solid #e5e5e5",
+            paddingTop: spacing.card,
+          }}
+        >
+          <div
+            className="grid md:grid-cols-2 xl:grid-cols-3"
+            style={{
+              gap: spacing.gap,
+            }}
+          >
+            {collections.map((collection) => (
+              <Card key={collection.id}>
+                <h3
+                  className="font-semibold text-[#111827]"
+                  style={{
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  {collection.title}
+                </h3>
 
-              <p className="mt-5 leading-8 text-gray-600">
-                {collection.shortDescription}
-              </p>
-            </Card>
-          ))}
+                <p
+                  className="text-neutral-600"
+                  style={{
+                    marginTop: spacing.md,
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {collection.shortDescription}
+                </p>
+              </Card>
+            ))}
+          </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

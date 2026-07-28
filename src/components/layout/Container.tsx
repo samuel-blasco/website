@@ -1,17 +1,38 @@
-import { ReactNode } from "react";
+// src/components/layout/Container.tsx
 
-interface ContainerProps {
+import { ReactNode } from "react";
+import clsx from "clsx";
+
+import { layout, spacing } from "@/styles/design";
+
+interface Props {
   children: ReactNode;
   className?: string;
+  size?: "default" | "wide" | "full";
 }
 
 export default function Container({
   children,
-  className = "",
-}: ContainerProps) {
+  className,
+  size = "default",
+}: Props) {
+  const maxWidths = {
+    default: layout.container,
+    wide: layout.containerWide,
+    full: "100%",
+  };
+
   return (
     <div
-      className={`mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 ${className}`}
+      className={clsx(className)}
+      style={{
+        width: "100%",
+        maxWidth: maxWidths[size],
+        margin: "0 auto",
+        paddingLeft: spacing.lg,
+        paddingRight: spacing.lg,
+        boxSizing: "border-box",
+      }}
     >
       {children}
     </div>

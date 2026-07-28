@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
+import { radius, spacing, typography } from "@/styles/design";
+
 interface ButtonProps {
   children: ReactNode;
   href?: string;
@@ -14,46 +16,6 @@ export default function Button({
   variant = "primary",
   className = "",
 }: ButtonProps) {
-  const classes = `
-    inline-flex
-    items-center
-    gap-3
-
-    rounded-full
-
-    px-7
-    py-4
-
-    text-sm
-    font-semibold
-    tracking-wide
-
-    transition-all
-    duration-300
-
-    hover:-translate-y-1
-
-    ${
-      variant === "primary"
-        ? `
-          bg-[#111827]
-          text-white
-          hover:bg-[#0F172A]
-          shadow-xl shadow-black/10
-        `
-        : `
-          bg-white/70
-          backdrop-blur-md
-          border border-gray-200
-          text-[#111827]
-          hover:border-[#0F7EA8]
-          hover:text-[#0F7EA8]
-        `
-    }
-
-    ${className}
-  `;
-
   const content = (
     <>
       <span>{children}</span>
@@ -64,16 +26,54 @@ export default function Button({
     </>
   );
 
+  const style: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: spacing.sm,
+
+    padding: `${spacing.sm} ${spacing.md}`,
+
+    borderRadius: radius.xl,
+
+    fontSize: typography.body,
+    fontWeight: 600,
+    letterSpacing: "0.02em",
+
+    transition: "all 300ms ease",
+  };
+
+  if (variant === "primary") {
+    Object.assign(style, {
+      background: "#111827",
+      color: "#FFFFFF",
+      boxShadow: "0 12px 32px rgba(0,0,0,.10)",
+    });
+  } else {
+    Object.assign(style, {
+      background: "rgba(255,255,255,.7)",
+      backdropFilter: "blur(16px)",
+      border: "1px solid #E5E7EB",
+      color: "#111827",
+    });
+  }
+
   if (href) {
     return (
-      <Link href={href} className={`group ${classes}`}>
+      <Link
+        href={href}
+        className={`group ${className}`}
+        style={style}
+      >
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={`group ${classes}`}>
+    <button
+      className={`group ${className}`}
+      style={style}
+    >
       {content}
     </button>
   );

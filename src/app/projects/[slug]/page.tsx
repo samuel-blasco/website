@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 
+import KnowledgePage from "@/components/knowledge/KnowledgePage";
+
 import { getKnowledgeObject } from "@/lib/content";
 
 interface Props {
@@ -19,19 +21,5 @@ export default async function ProjectPage({
     notFound();
   }
 
-  return (
-    <main className="mx-auto max-w-4xl px-8 py-32">
-      <h1 className="text-5xl font-bold">
-        {object.title}
-      </h1>
-
-      <p className="mt-6 text-xl text-gray-600">
-        {object.shortDescription}
-      </p>
-
-      <div className="prose mt-12 max-w-none">
-        <p>{object.description}</p>
-      </div>
-    </main>
-  );
+  return <KnowledgePage object={object} />;
 }

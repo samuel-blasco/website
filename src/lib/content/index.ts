@@ -11,3 +11,4 @@ export * from "./get-timeline-by-year";
 
 export * from "./get-related";
 export * from "./search";
+export * from "./get-object-url";

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { layout, radius, spacing } from "@/styles/design";
+
 const links = [
   {
     label: "Projects",
@@ -16,49 +18,60 @@ const links = [
     href: "/journal",
   },
   {
-    label: "Atlas",
-    href: "/atlas",
+    label: "Collections",
+    href: "/collections",
+  },
+  {
+    label: "Skills",
+    href: "/skills",
   },
 ];
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center pt-6">
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: spacing.md,
+        paddingLeft: spacing.md,
+        paddingRight: spacing.md,
+      }}
+    >
       <nav
         className="
-          flex
-          items-center
-          gap-10
-
-          rounded-full
-
           border
-          border-black/5
-
-          bg-white/70
-          backdrop-blur-xl
-
-          px-8
-          py-4
-
+          border-neutral-200/70
+          bg-white/75
           shadow-lg
           shadow-black/5
+          backdrop-blur-2xl
         "
+        style={{
+          width: "100%",
+          maxWidth: layout.container,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: `${spacing.sm} ${spacing.card}`,
+          borderRadius: radius.xl,
+          boxSizing: "border-box",
+        }}
       >
         {/* Logo */}
         <Link
           href="/"
           className="
-            mr-4
-
-            text-base
+            text-lg
             font-semibold
             tracking-tight
-
-            text-[#111827]
-
+            text-neutral-900
             transition-colors
-
             hover:text-[#0F7EA8]
           "
         >
@@ -66,20 +79,27 @@ export default function Navbar() {
         </Link>
 
         {/* Navigation */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul
+          className="md:flex"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: spacing.gap,
+            listStyle: "none",
+          }}
+        >
           {links.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
                 className="
+                  relative
                   text-sm
                   font-medium
-
                   text-neutral-500
-
                   transition-colors
-
-                  hover:text-[#111827]
+                  duration-200
+                  hover:text-neutral-900
                 "
               >
                 {link.label}
@@ -88,29 +108,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* Contact */}
         <Link
-          href="/atlas"
+          href="/contact"
           className="
-            rounded-full
-
-            bg-[#111827]
-
-            px-5
-            py-2.5
-
+            border
+            border-neutral-200
             text-sm
             font-medium
-
-            text-white
-
+            text-neutral-700
             transition-all
-
-            hover:bg-[#0F172A]
-            hover:-translate-y-0.5
+            hover:border-[#0F7EA8]/40
+            hover:text-[#0F7EA8]
           "
+          style={{
+            padding: `${spacing.sm} ${spacing.md}`,
+            borderRadius: radius.xl,
+          }}
         >
-          Explore Atlas
+          Contact
         </Link>
       </nav>
     </header>

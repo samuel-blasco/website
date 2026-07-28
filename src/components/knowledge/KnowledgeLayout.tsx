@@ -1,31 +1,45 @@
-import { KnowledgeObject } from "@/types/knowledge-object";
+import { ReactNode } from "react";
 
 import Container from "../layout/Container";
 import KnowledgeHeader from "./KnowledgeHeader";
+import KnowledgeBanner from "./KnowledgeBanner";
 import KnowledgeBody from "./KnowledgeBody";
-import KnowledgeSidebar from "./KnowledgeSidebar";
+import KnowledgeMeta from "./KnowledgeMeta";
 import KnowledgeRelated from "./KnowledgeRelated";
+import { KnowledgeObject } from "@/types/knowledge-object";
 
 interface Props {
-  object: KnowledgeObject;
+    object: KnowledgeObject;
 }
 
-export default function KnowledgeLayout({
-  object,
-}: Props) {
-  return (
-    <main className="pt-36 pb-32">
-      <Container>
-        <KnowledgeHeader object={object} />
+export default function KnowledgeLayout({ object }: Props) {
+    return (
+        <>
+            <KnowledgeBanner object={object} />
 
-        <div className="mt-20 grid gap-20 lg:grid-cols-[1fr_320px]">
-          <KnowledgeBody object={object} />
+            <Container className="py-20">
 
-          <KnowledgeSidebar object={object} />
-        </div>
+                <KnowledgeHeader object={object} />
 
-        <KnowledgeRelated object={object} />
-      </Container>
-    </main>
-  );
+                <div className="mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_340px]">
+
+                    <KnowledgeBody object={object} />
+
+                    <aside className="sticky top-28 h-fit">
+
+                        <KnowledgeMeta object={object} />
+
+                    </aside>
+
+                </div>
+
+                <div className="mt-28">
+
+                    <KnowledgeRelated object={object} />
+
+                </div>
+
+            </Container>
+        </>
+    );
 }

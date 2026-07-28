@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import { radius, spacing } from "@/styles/design";
+
 interface BadgeProps {
   children: ReactNode;
   className?: string;
@@ -15,15 +17,10 @@ export default function Badge({
         inline-flex
         items-center
 
-        rounded-full
-
         border
         border-sky-100
 
         bg-sky-50
-
-        px-3
-        py-1.5
 
         text-xs
         font-medium
@@ -39,6 +36,10 @@ export default function Badge({
 
         ${className}
       `}
+      style={{
+        borderRadius: radius.xl,
+        padding: `${spacing.xs} ${spacing.sm}`,
+      }}
     >
       {children}
     </span>

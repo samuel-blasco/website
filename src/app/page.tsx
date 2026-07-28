@@ -18,20 +18,20 @@ import {
 
 export default function Home() {
   const collections = getFeaturedCollections();
-
   const projects = getFeaturedProjects();
-
   const research = getFeaturedResearch();
-
   const articles = getFeaturedArticles();
-
   const timeline = getTimelineByYear();
 
   return (
     <>
       <Navbar />
 
-      <main className="bg-[#FCFCFA]">
+      <main
+        style={{
+          background: "#FCFCFA",
+        }}
+      >
         <Hero />
 
         <Curiosity collections={collections} />

@@ -1,64 +1,78 @@
+// src/components/ui/Card.tsx
+
 import { ReactNode } from "react";
+import clsx from "clsx";
+
+import { radius, spacing } from "@/styles/design";
 
 interface CardProps {
   children: ReactNode;
   className?: string;
+  interactive?: boolean;
 }
 
 export default function Card({
   children,
-  className = "",
+  className,
+  interactive = true,
 }: CardProps) {
   return (
-    <article
-      className={`
-        group
+    <div
+      className={clsx(
+        `
         relative
         overflow-hidden
 
-        rounded-3xl
-
-        border
-        border-neutral-200/70
-
-        bg-white/70
-        backdrop-blur-md
-
-        p-10
-
         transition-all
         duration-500
+        ease-out
+        `,
+        interactive &&
+          `
+          hover:-translate-y-1.5
+          hover:border-sky-200
+          hover:shadow-[0_20px_60px_rgba(15,126,168,0.10)]
+        `,
+        className
+      )}
+      style={{
+        borderRadius: radius.lg,
 
-        hover:-translate-y-1
-        hover:border-neutral-300
-        hover:shadow-2xl
+        border: "1px solid rgba(229,229,229,.8)",
 
-        ${className}
-      `}
+        background: "rgba(255,255,255,.90)",
+        backdropFilter: "blur(20px)",
+
+        padding: spacing.card,
+
+        boxShadow: "0 4px 20px rgba(0,0,0,.025)",
+      }}
     >
+      {/* Halo */}
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-
           opacity-0
-
           transition-opacity
           duration-500
-
           group-hover:opacity-100
-
-          bg-gradient-to-br
-          from-white
-          via-transparent
-          to-sky-50
         "
+        style={{
+          background:
+            "radial-gradient(circle at top, rgba(15,126,168,.04), transparent 60%)",
+        }}
       />
 
-      <div className="relative z-10">
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
         {children}
       </div>
-    </article>
+    </div>
   );
 }

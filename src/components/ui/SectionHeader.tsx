@@ -1,4 +1,6 @@
-interface SectionHeaderProps {
+import { layout, spacing, typography } from "@/styles/design";
+
+interface Props {
   eyebrow: string;
   title: string;
   description: string;
@@ -8,54 +10,46 @@ export default function SectionHeader({
   eyebrow,
   title,
   description,
-}: SectionHeaderProps) {
+}: Props) {
   return (
-    <header className="mx-auto mb-24 max-w-4xl">
-      <p
-        className="
-          mb-6
-
-          text-sm
-          font-semibold
-          uppercase
-          tracking-[0.3em]
-
-          text-[#0F7EA8]
-        "
+    <header
+      style={{
+        maxWidth: layout.container,
+        margin: "0 auto",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: typography.articleWidth,
+        }}
       >
-        {eyebrow}
-      </p>
+        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#0F7EA8]">
+          {eyebrow}
+        </p>
 
-      <h2
-        className="
-          max-w-3xl
+        <h2
+          className="font-semibold tracking-[-0.04em] text-[#111827]"
+          style={{
+            marginTop: spacing.md,
+            fontSize: typography.sectionTitle,
+            lineHeight: 1.05,
+          }}
+        >
+          {title}
+        </h2>
 
-          text-5xl
-          font-bold
-          tracking-tight
-
-          text-[#111827]
-
-          md:text-6xl
-        "
-      >
-        {title}
-      </h2>
-
-      <p
-        className="
-          mt-8
-
-          max-w-2xl
-
-          text-xl
-          leading-9
-
-          text-gray-600
-        "
-      >
-        {description}
-      </p>
+        <p
+          className="text-neutral-600"
+          style={{
+            marginTop: spacing.lg,
+            maxWidth: typography.heroWidth,
+            fontSize: typography.largeBody,
+            lineHeight: 1.8,
+          }}
+        >
+          {description}
+        </p>
+      </div>
     </header>
   );
 }

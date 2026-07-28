@@ -1,66 +1,188 @@
+import { layout, radius, spacing, typography } from "@/styles/design";
+
 import Button from "../ui/Button";
+
+const domains = [
+  "Computational Social Science",
+  "Artificial Intelligence",
+  "Digital Fabrication",
+  "Knowledge Engineering",
+];
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center">
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-8 text-center">
+      <section
+        style={{
+          position: "relative",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          minHeight: `calc(100vh - ${layout.navbarHeight})`,
+          marginTop: layout.navbarHeight,
+
+          overflow: "hidden",
+          boxSizing: "border-box",
+        }}
+      >
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+
+          width: "100%",
+          maxWidth: layout.container,
+
+          margin: "0 auto",
+
+          paddingLeft: spacing.lg,
+          paddingRight: spacing.lg,
+
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+
+          textAlign: "center",
+
+          boxSizing: "border-box",
+        }}
+      >
         {/* Eyebrow */}
-        <p className="mb-8 text-xs font-semibold uppercase tracking-[0.45em] text-[#0F7EA8]">
-          DIGITAL LABORATORY
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.45em] text-[#0F7EA8]"
+          style={{
+            marginBottom: spacing.lg,
+          }}
+        >
+          Digital Laboratory
         </p>
 
-        {/* Name */}
-        <h1 className="text-6xl font-bold leading-[0.9] tracking-[-0.07em] text-[#111827] sm:text-7xl lg:text-8xl xl:text-9xl">
-          Samuel Blasco
+        {/* Main heading */}
+        <h1
+          className="font-bold tracking-[-0.06em] text-[#111827]"
+          style={{
+            maxWidth: "90rem",
+            fontSize: "clamp(4rem, 8vw, 8rem)",
+            lineHeight: 0.95,
+          }}
+        >
+          Exploring{" "}
+          <span className="text-[#0F7EA8]">
+            Computational Social Science
+          </span>
+          , AI and Digital Fabrication.
         </h1>
 
-        {/* Subtitle */}
-        <p className="mt-10 max-w-3xl text-xl leading-9 text-neutral-600 md:text-2xl">
-          Building a connected laboratory where research, software,
-          artificial intelligence and digital fabrication become part of a
-          single evolving knowledge graph.
+        {/* Introduction */}
+        <p
+          className="text-neutral-600"
+          style={{
+            marginTop: spacing.xl,
+            maxWidth: typography.heroWidth,
+            fontSize: typography.largeBody,
+            lineHeight: 1.8,
+          }}
+        >
+          I'm Samuel Blasco, a student and builder exploring how artificial
+          intelligence, computational methods and digital fabrication can help
+          understand, create and share knowledge.
         </p>
 
-        {/* CTA */}
-        <div className="mt-16 flex flex-wrap justify-center gap-5">
-          <Button href="/atlas">
-            Explore Atlas
+        {/* Actions */}
+        <div
+          style={{
+            marginTop: spacing.section,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: spacing.md,
+          }}
+        >
+          <Button href="/projects">
+            Explore Projects
           </Button>
 
           <Button
-            href="/projects"
+            href="/research"
             variant="secondary"
           >
-            Browse Projects
+            Read Research
           </Button>
         </div>
 
         {/* Domains */}
-        <div className="mt-20 flex flex-wrap items-center justify-center gap-5 text-sm font-medium uppercase tracking-[0.22em] text-neutral-500">
-          <span>Artificial Intelligence</span>
-
-          <span className="opacity-30">•</span>
-
-          <span>Computational Social Science</span>
-
-          <span className="opacity-30">•</span>
-
-          <span>Knowledge Graphs</span>
-
-          <span className="opacity-30">•</span>
-
-          <span>Digital Fabrication</span>
+        <div
+          style={{
+            marginTop: spacing.section,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: spacing.sm,
+          }}
+        >
+          {domains.map((domain) => (
+            <span
+              key={domain}
+              className="
+                border
+                border-neutral-200
+                bg-white/70
+                shadow-sm
+                backdrop-blur-sm
+                transition-colors
+                duration-200
+                hover:border-[#0F7EA8]/40
+                hover:text-[#0F7EA8]
+              "
+              style={{
+                borderRadius: radius.xl,
+                padding: `${spacing.sm} ${spacing.md}`,
+                fontSize: "0.875rem",
+                fontWeight: 500,
+                color: "#404040",
+              }}
+            >
+              {domain}
+            </span>
+          ))}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-        <div className="flex flex-col items-center">
-          <span className="mb-3 text-[11px] uppercase tracking-[0.35em] text-neutral-400">
+      <div
+        style={{
+          position: "absolute",
+          bottom: spacing.xl,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <span
+            className="font-medium uppercase tracking-[0.35em] text-neutral-400"
+            style={{
+              marginBottom: spacing.sm,
+              fontSize: "11px",
+            }}
+          >
             Scroll
           </span>
 
-          <div className="h-14 w-px bg-gradient-to-b from-neutral-400 to-transparent" />
+          <div
+            style={{
+              width: "1px",
+              height: "4rem",
+              background:
+                "linear-gradient(to bottom, #a3a3a3, transparent)",
+            }}
+          />
         </div>
       </div>
     </section>

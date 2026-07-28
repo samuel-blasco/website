@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
+import { radius, spacing } from "@/styles/design";
+
 interface TagProps {
   children: ReactNode;
   href?: string;
@@ -12,25 +14,25 @@ export default function Tag({
   href,
   className = "",
 }: TagProps) {
+  const style: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+
+    borderRadius: radius.xl,
+
+    border: "1px solid #E5E7EB",
+
+    background: "#FFFFFF",
+
+    padding: `${spacing.sm} ${spacing.md}`,
+
+    fontSize: "0.875rem",
+    fontWeight: 500,
+
+    color: "#404040",
+  };
+
   const classes = `
-    inline-flex
-    items-center
-
-    rounded-full
-
-    border
-    border-neutral-200
-
-    bg-white
-
-    px-4
-    py-2
-
-    text-sm
-    font-medium
-
-    text-neutral-700
-
     transition-all
     duration-300
 
@@ -44,11 +46,22 @@ export default function Tag({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        style={style}
+      >
         {children}
       </Link>
     );
   }
 
-  return <span className={classes}>{children}</span>;
+  return (
+    <span
+      className={classes}
+      style={style}
+    >
+      {children}
+    </span>
+  );
 }
