@@ -16,6 +16,7 @@ export default function Curiosity({
 }: CuriosityProps) {
   return (
     <Section
+      spacing="lg"
       style={{
         background: "#FCFCFA",
       }}
@@ -29,6 +30,7 @@ export default function Curiosity({
 
         <div
           style={{
+            marginTop: spacing.section,
             borderTop: "1px solid #e5e5e5",
             paddingTop: spacing.card,
           }}
@@ -42,9 +44,10 @@ export default function Curiosity({
             {collections.map((collection) => (
               <Card key={collection.id}>
                 <h3
-                  className="font-semibold text-[#111827]"
+                  className="text-[#111827]"
                   style={{
                     fontSize: "1.5rem",
+                    fontWeight: 600,
                   }}
                 >
                   {collection.title}

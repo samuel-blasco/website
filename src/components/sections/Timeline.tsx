@@ -26,8 +26,6 @@ export default function Timeline({
           eyebrow="Timeline"
           title="A journey through ideas."
           description="Every project builds on the previous one. My work evolves through research, engineering and curiosity."
-          actionLabel="View full timeline"
-          actionHref="/timeline"
         />
 
         <div
