@@ -1,15 +1,13 @@
-export interface Article {
-  id: string;
+import { KnowledgeObject } from "./knowledge-object";
 
-  title: string;
+export interface Article extends KnowledgeObject {
+  type: "article";
 
   date: string;
 
   readingTime: string;
 
-  excerpt: string;
+  author?: string;
 
-  tags: string[];
-
-  related: string[];
+  published?: boolean;
 }

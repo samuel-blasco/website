@@ -10,18 +10,52 @@ export default function SectionHeader({
   description,
 }: SectionHeaderProps) {
   return (
-    <div className="mb-20">
-      <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-[#0F7EA8]">
+    <header className="mx-auto mb-24 max-w-4xl">
+      <p
+        className="
+          mb-6
+
+          text-sm
+          font-semibold
+          uppercase
+          tracking-[0.3em]
+
+          text-[#0F7EA8]
+        "
+      >
         {eyebrow}
       </p>
 
-      <h2 className="text-5xl font-bold tracking-tight text-[#111827]">
+      <h2
+        className="
+          max-w-3xl
+
+          text-5xl
+          font-bold
+          tracking-tight
+
+          text-[#111827]
+
+          md:text-6xl
+        "
+      >
         {title}
       </h2>
 
-      <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-600">
+      <p
+        className="
+          mt-8
+
+          max-w-2xl
+
+          text-xl
+          leading-9
+
+          text-gray-600
+        "
+      >
         {description}
       </p>
-    </div>
+    </header>
   );
 }

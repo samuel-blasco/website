@@ -1,0 +1,431 @@
+Je trouve que tu viens de formuler quelque chose de beaucoup plus ambitieux que ce que j'imaginais, et surtout beaucoup plus cohérent avec l'idée du **laboratoire numérique**.
+
+Ce que j'entends, c'est que **le site n'a pas deux modes**, mais **deux façons d'explorer exactement les mêmes connaissances**.
+
+Je le formaliserais ainsi.
+
+---
+
+# Deux modes de navigation
+
+Le visiteur peut choisir librement.
+
+## 1. Navigation classique
+
+C'est ce qu'on est en train de construire.
+
+```
+Home
+
+↓
+
+Projects
+
+↓
+
+Pelops
+
+↓
+
+Python
+```
+
+Très rassurant.
+
+Très SEO.
+
+Très accessible.
+
+---
+
+## 2. Atlas
+
+Même contenu.
+
+Même objets.
+
+Mais navigation spatiale.
+
+Le visiteur explore le réseau.
+
+Aucun contenu supplémentaire.
+
+---
+
+Ces deux modes utilisent exactement les mêmes `KnowledgeObject`.
+
+C'est très important.
+
+---
+
+# Ensuite Atlas possède trois niveaux
+
+Là je pense que tu tiens quelque chose de vraiment original.
+
+## 1 — Local View
+
+C'est Google Maps.
+
+```
+          Python
+
+            ○
+
+             ╲
+
+Memory ○────Pelops────Knowledge Graphs
+
+             ╱
+
+      Building Pelops
+```
+
+On voit seulement :
+
+* le nœud actuel
+* ses voisins
+* éventuellement les voisins des voisins
+
+---
+
+À droite :
+
+une grande carte flottante.
+
+```
+┌────────────────────────────┐
+
+Pelops
+
+description
+
+technologies
+
+related
+
+...
+
+└────────────────────────────┘
+```
+
+Le graphe reste visible derrière.
+
+Ça me plaît énormément.
+
+---
+
+## 2 — Atlas View
+
+Le satellite.
+
+```
+○
+
+        ○
+
+                 ○
+
+○
+
+      ○
+
+                     ○
+```
+
+Toute la connaissance.
+
+La carte flottante reste.
+
+On voit où l'on est.
+
+On peut zoomer.
+
+Pan.
+
+Explorer.
+
+---
+
+## 3 — Full Page
+
+Quand je reclique.
+
+La carte devient :
+
+```
+/projects/pelops
+```
+
+ou
+
+```
+/research/...
+```
+
+Une vraie page.
+
+Sans le graphe.
+
+Lecture confortable.
+
+---
+
+Je pense que ces trois niveaux sont parfaits.
+
+---
+
+# Ce que j'aime énormément
+
+Tu ne passes jamais :
+
+```
+graphe
+
+↓
+
+page
+```
+
+Tu passes
+
+```
+graphe
+
+↓
+
+carte flottante
+
+↓
+
+page
+```
+
+La transition est naturelle.
+
+---
+
+# Ensuite...
+
+Tu viens d'avoir une idée que je trouve probablement la meilleure du projet.
+
+Les impulsions lumineuses.
+
+---
+
+Aujourd'hui les graphes sont statiques.
+
+Toi tu proposes un graphe vivant.
+
+---
+
+Imaginons.
+
+Tu passes la souris.
+
+```
+Pelops
+```
+
+↓
+
+Une lumière apparaît.
+
+```
+Pelops━━━━━━▶Python
+```
+
+Puis
+
+```
+Python━━━━━━▶Author Extraction
+```
+
+Puis
+
+```
+Author Extraction━━━━━━▶Political Trust
+```
+
+L'intensité diminue.
+
+Comme dans un réseau neuronal.
+
+---
+
+Je pense même que cette propagation ne devrait pas être purement graphique.
+
+Elle devrait suivre le Knowledge Graph.
+
+Autrement dit :
+
+```
+hover
+
+↓
+
+Knowledge Graph
+
+↓
+
+BFS
+
+↓
+
+animation
+```
+
+Pas
+
+```
+animation aléatoire
+```
+
+---
+
+# Encore mieux
+
+Les nœuds touchés deviennent lisibles.
+
+Par exemple.
+
+Au départ.
+
+```
+○
+
+○
+
+○
+
+○
+```
+
+---
+
+Quand la lumière passe.
+
+```
+Pelops
+
+Python
+
+Knowledge Graphs
+
+Author Extraction
+```
+
+Le texte apparaît.
+
+Puis disparaît doucement.
+
+Je trouve ça magnifique.
+
+---
+
+# Et encore mieux...
+
+L'intensité pourrait dépendre du poids des arêtes.
+
+Aujourd'hui
+
+```
+Pelops
+
+↓
+
+Python
+
+↓
+
+Knowledge Graphs
+```
+
+Demain.
+
+Si Python est très important.
+
+```
+██████████
+
+↓
+
+███
+
+↓
+
+█
+```
+
+La lumière suit les poids.
+
+Le graphe raconte quelque chose.
+
+---
+
+# Une conséquence énorme
+
+En réalité...
+
+Atlas n'est plus une visualisation.
+
+C'est une simulation.
+
+Les connaissances circulent.
+
+Elles vivent.
+
+---
+
+# Je pense qu'il faut revoir complètement `lib/graph`
+
+Je ne parlerais plus de
+
+```
+physics
+
+layout
+
+animation
+```
+
+Je parlerais de
+
+```
+Physics Engine
+
+Layout Engine
+
+Propagation Engine
+
+Rendering Engine
+
+Knowledge Engine
+```
+
+Parce que tu viens d'introduire une nouvelle notion.
+
+La propagation.
+
+Elle devient aussi importante que la physique.
+
+---
+
+# Je pense même que le Hero devrait utiliser ce moteur
+
+Aujourd'hui.
+
+Le Hero affiche juste un graphe.
+
+Demain.
+
+Les impulsions lumineuses circulent déjà.
+
+Sans interaction.
+
+Comme un cerveau qui pense.
+
+Puis, lorsque le visiteur entre dans Atlas...
+
+Le même réseau devient interactif.
+
+Autrement dit, **le Hero n'est plus une simple animation décorative : c'est Atlas qui dort**. Quand on clique sur « Explore with Atlas », il ne disparaît pas. Il se réveille. Le fond prend de l'importance, les nœuds se réorganisent, la carte flottante apparaît et l'on comprend que le graphe que l'on regardait depuis le début était déjà le cœur du site. C'est une transition qui donne beaucoup de sens à toute la Knowledge Graph Experience.

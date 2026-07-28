@@ -1,9 +1,9 @@
-export interface Collection {
-  id: string;
+import { KnowledgeObject } from "./knowledge-object";
 
-  title: string;
+export interface Collection extends KnowledgeObject {
+  type: "collection";
 
-  description: string;
+  icon?: string;
 
-  related: string[];
+  color?: string;
 }

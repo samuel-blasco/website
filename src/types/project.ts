@@ -1,20 +1,23 @@
-export interface Project {
-  id: string;
+import { KnowledgeObject } from "./knowledge-object";
 
-  title: string;
-  description: string;
+export interface Project extends KnowledgeObject {
+  type: "project";
+
+  subtitle?: string;
 
   technologies: string[];
 
-  tags: string[];
+  gallery?: string[];
 
-  related: string[];
+  github?: string;
 
-  gallery: string[];
+  website?: string;
 
-  links: {
-    github?: string;
-    demo?: string;
-    website?: string;
-  };
+  demo?: string;
+
+  startDate?: string;
+
+  endDate?: string;
+
+  status?: "planned" | "ongoing" | "completed";
 }

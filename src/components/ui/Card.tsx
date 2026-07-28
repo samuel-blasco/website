@@ -1,20 +1,64 @@
-import { HTMLAttributes } from "react";
+import { ReactNode } from "react";
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+interface CardProps {
+  children: ReactNode;
+  className?: string;
 }
 
 export default function Card({
   children,
   className = "",
-  ...props
 }: CardProps) {
   return (
-    <div
-      className={`rounded-3xl border border-gray-200 bg-white p-10 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${className}`}
-      {...props}
+    <article
+      className={`
+        group
+        relative
+        overflow-hidden
+
+        rounded-3xl
+
+        border
+        border-neutral-200/70
+
+        bg-white/70
+        backdrop-blur-md
+
+        p-10
+
+        transition-all
+        duration-500
+
+        hover:-translate-y-1
+        hover:border-neutral-300
+        hover:shadow-2xl
+
+        ${className}
+      `}
     >
-      {children}
-    </div>
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+
+          opacity-0
+
+          transition-opacity
+          duration-500
+
+          group-hover:opacity-100
+
+          bg-gradient-to-br
+          from-white
+          via-transparent
+          to-sky-50
+        "
+      />
+
+      <div className="relative z-10">
+        {children}
+      </div>
+    </article>
   );
 }

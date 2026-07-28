@@ -1,36 +1,23 @@
+import Container from "../layout/Container";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
 import SectionHeader from "../ui/SectionHeader";
-import Container from "../layout/Container";
 
-export default function FeaturedProjects() {
-  const projects = [
-    {
-      title: "Pelops",
-      category: "Artificial Intelligence",
-      description:
-        "A modular AI assistant built around memory, reasoning and intelligent orchestration.",
-      technologies: ["Python", "Ollama", "LLMs", "Knowledge Graphs"],
-    },
-    {
-      title: "Political Trust NLP",
-      category: "Computational Social Science",
-      description:
-        "Natural language processing methods for analysing political trust through large-scale textual datasets.",
-      technologies: ["Python", "spaCy", "NLP", "Machine Learning"],
-    },
-    {
-      title: "OpenKnit",
-      category: "Digital Fabrication",
-      description:
-        "An open-source knitting machine project combining embedded electronics, 3D printing and software.",
-      technologies: ["3D Printing", "Embedded Systems", "CAD"],
-    },
-  ];
+import { Project } from "@/types/project";
 
+interface FeaturedProjectsProps {
+  projects: Project[];
+}
+
+export default function FeaturedProjects({
+  projects,
+}: FeaturedProjectsProps) {
   return (
-    <section className="bg-[#FCFCFA] py-40" id="projects">
+    <section
+      id="projects"
+      className="bg-[#FCFCFA] py-40"
+    >
       <Container>
         <SectionHeader
           eyebrow="Projects"
@@ -40,22 +27,26 @@ export default function FeaturedProjects() {
 
         <div className="space-y-10">
           {projects.map((project) => (
-            <Card key={project.title}>
-              <p className="text-sm font-semibold uppercase tracking-widest text-[#0F7EA8]">
-                {project.category}
-              </p>
+            <Card key={project.id}>
+              {project.subtitle && (
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#0F7EA8]">
+                  {project.subtitle}
+                </p>
+              )}
 
               <h3 className="mt-4 text-4xl font-bold text-[#111827]">
                 {project.title}
               </h3>
 
               <p className="mt-6 max-w-3xl leading-8 text-gray-600">
-                {project.description}
+                {project.shortDescription}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                {project.technologies.map((tech) => (
-                  <Badge key={tech}>{tech}</Badge>
+                {project.technologies.map((technology) => (
+                  <Badge key={technology}>
+                    {technology}
+                  </Badge>
                 ))}
               </div>
 

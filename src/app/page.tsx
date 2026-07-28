@@ -1,5 +1,4 @@
 import Navbar from "@/components/layout/Navbar";
-
 import Hero from "@/components/hero/Hero";
 
 import Curiosity from "@/components/sections/Curiosity";
@@ -9,7 +8,25 @@ import Journal from "@/components/sections/Journal";
 import Timeline from "@/components/sections/Timeline";
 import Contact from "@/components/sections/Contact";
 
+import {
+  getFeaturedCollections,
+  getFeaturedProjects,
+  getFeaturedResearch,
+  getFeaturedArticles,
+  getTimelineByYear,
+} from "@/lib/content";
+
 export default function Home() {
+  const collections = getFeaturedCollections();
+
+  const projects = getFeaturedProjects();
+
+  const research = getFeaturedResearch();
+
+  const articles = getFeaturedArticles();
+
+  const timeline = getTimelineByYear();
+
   return (
     <>
       <Navbar />
@@ -17,15 +34,15 @@ export default function Home() {
       <main className="bg-[#FCFCFA]">
         <Hero />
 
-        <Curiosity />
+        <Curiosity collections={collections} />
 
-        <FeaturedProjects />
+        <FeaturedProjects projects={projects} />
 
-        <ResearchHighlights />
+        <ResearchHighlights research={research} />
 
-        <Journal />
+        <Journal articles={articles} />
 
-        <Timeline />
+        <Timeline timeline={timeline} />
 
         <Contact />
       </main>

@@ -1,15 +1,17 @@
-export interface Research {
-  id: string;
+import { KnowledgeObject } from "./knowledge-object";
 
-  title: string;
+export interface Research extends KnowledgeObject {
+  type: "research";
 
-  laboratory: string;
-
-  description: string;
+  laboratory?: string;
 
   methods: string[];
 
-  datasets: string[];
+  datasets?: string[];
 
-  related: string[];
+  publications?: string[];
+
+  startDate?: string;
+
+  endDate?: string;
 }

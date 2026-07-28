@@ -1,7 +1,19 @@
-export interface TimelineEvent {
-  year: string;
+import { KnowledgeObject } from "./knowledge-object";
 
-  title: string;
+export interface TimelineEvent extends KnowledgeObject {
+  type: "timeline";
 
-  description: string;
+  start: string;
+
+  end?: string;
+
+  category:
+    | "education"
+    | "research"
+    | "experience"
+    | "project"
+    | "award"
+    | "volunteering";
+
+  location?: string;
 }

@@ -1,25 +1,15 @@
-export const GRAPH = {
-  NODE_COUNT: 100,
+export const NODE_RADIUS = 8;
 
-  NODE_RADIUS: 2,
+export const NODE_REPULSION = 900;
 
-  MIN_DISTANCE: 0.06,
+export const SPRING_LENGTH = 140;
 
-  MAX_CONNECTIONS: 3,
+export const SPRING_STRENGTH = 0.015;
 
-  CENTER_HOLE_WIDTH: 0.42,
-  CENTER_HOLE_HEIGHT: 0.34,
+export const DAMPING = 0.92;
 
-  ANIMATION_SPEED_MIN: 0.2,
-  ANIMATION_SPEED_MAX: 0.6,
+export const PULSE_SPEED = 0.02;
 
-  BREATHING_AMPLITUDE: 4,
+export const PULSE_DECAY = 0.88;
 
-  EDGE_OPACITY: 0.15,
-
-  EDGE_WIDTH: 1,
-
-  NODE_COLOR: "#0F7EA8",
-
-  BACKGROUND: "#FCFCFA",
-} as const;
+export const MAX_PROPAGATION_DEPTH = 5;
